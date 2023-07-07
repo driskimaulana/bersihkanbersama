@@ -10,4 +10,9 @@
     <color name="light_blue_600">#FF039BE5</color>
     <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_600">#FF757575</color>
+    <color name="dark_green">#FF1E2B2E</color>
+    <color name="light_gray">#FFECECEC</color>
+    <color name="logout_red">#FFFF3434</color>
+    <color name="navigation_green">#FF11181A</color>
+    <color name="icon_gray">#FFECECEC</color>
 </resources>
