@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">bersihkanbersama</string>
+    <string name="add_address">Tambah Alamat</string>
+    <string name="account_setting">Pengaturan Akun</string>
+    <string name="desc_profile_pic">Foto Profile</string>
+    <string name="title_add_aksi">Daftarkan Aksimu!</string>
+    <string name="et_title_aksi">Judul Aksi</string>
+    <string name="et_desc_aksi">Deskripsi Aksi Kegiatan</string>
+    <string name="et_location">Lokasi Aksi Kegiatan</string>
+    <string name="et_address">Alamat Lengkap Aksi Kegiatan</string>
+    <string name="et_date_start">Tanggal Dimulai</string>
+    <string name="et_date_end">Tanggal Berakhir</string>
+    <string name="et_donation_amount">Dana Yang Dibutuhkan</string>
+    <string name="et_photo_cover">Cover Foto</string>
+    <string name="btn_submit_aksi">Daftar</string>
+    <string name="btn_logout">Logout</string>
+    <string name="tv_share">Share</string>
+    <string name="tv_forum">Forum</string>
+    <string name="tv_loading">Loading</string>
+    <string name="tv_shop">Point Shop</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

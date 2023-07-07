@@ -1,4 +1,4 @@
-package com.gemastik.bersihkanbersama.ui.activities
+package com.gemastik.bersihkanbersama.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
