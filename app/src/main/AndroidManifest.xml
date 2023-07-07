@@ -13,10 +13,16 @@
         android:theme="@style/Theme.Bersihkanbersama"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activities.DetailAksiActivity"
+            android:name=".ui.aksiberlangsung.AksiBerlangsungActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name=".ui.donate.DonateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detailaksi.DetailAksiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
