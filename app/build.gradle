@@ -86,4 +86,7 @@ dependencies {
 
     // ONBOARDING
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    // CYRCLE IMAGE
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
