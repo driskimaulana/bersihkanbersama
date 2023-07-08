@@ -73,7 +73,7 @@ interface ApiService {
         @Part("description") description: RequestBody,
         @Part("eventDate") eventDate: RequestBody,
         @Part("participationRewards") participationRewards: RequestBody,
-        @Part("firstRewards") firstReward: RequestBody,
+        @Part("firstRewards") firstRewards: RequestBody,
         @Part("secondRewards") secondRewards: RequestBody,
         @Part("thirdRewards") thirdRewards: RequestBody,
         @Part("coverImage") coverImage: MultipartBody.Part,

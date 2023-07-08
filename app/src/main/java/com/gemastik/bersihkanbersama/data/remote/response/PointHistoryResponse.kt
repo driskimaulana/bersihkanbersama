@@ -16,5 +16,8 @@ data class PointHistoryResponse(
     val pointIn: Int,
 
     @field:SerializedName("CreatedAt")
-    val createdAt: String
+    val createdAt: String,
+
+    @field:SerializedName("UpdatedAt")
+    val updatedAt: String
 )
