@@ -27,6 +27,7 @@ import com.gemastik.bersihkanbersama.ui.viewmodels.DonationViewModel
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 import java.text.NumberFormat
 import java.util.Locale
+import com.gemastik.bersihkanbersama.utils.Utils.formatPrice
 
 class DonateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDonateBinding
@@ -174,4 +175,3 @@ class DonateActivity : AppCompatActivity() {
         }
     }
 }
-

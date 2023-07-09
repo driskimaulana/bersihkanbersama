@@ -34,12 +34,12 @@ class DonationRepository private constructor(
         createNewDonationResult.value = Result.Loading
 
         val client = apiService.createNewDonation("Bearer $token", id, requestBody)
+
         client.enqueue(object : Callback<CommonResponse<CreateNewDonationResponse>> {
             override fun onResponse(
                 call: Call<CommonResponse<CreateNewDonationResponse>>,
                 response: Response<CommonResponse<CreateNewDonationResponse>>
             ) {
-                Log.d("driskidebug", response.body().toString())
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
                     if (responseBody.status == 201) {

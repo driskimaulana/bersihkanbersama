@@ -22,15 +22,13 @@
             android:name=".ui.onboarding.OnBoardingActivity"
             android:exported="true"
             android:label="@string/title_activity_onboarding"
-            android:theme="@style/Base.Theme.OnBoardingBersihkanbersama" >
 
-            <!--
-                 <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Base.Theme.OnBoardingBersihkanbersama">
+            <!--             <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter> -->
         </activity>
         <activity
             android:name=".ui.addhasilkilo.AddHasilKiloActivity"
@@ -52,26 +50,23 @@
             android:exported="false" />
         <activity
             android:name=".ui.SplashActivity"
-            android:exported="true" >
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.aksiberlangsung.AksiBerlangsungActivity"
             android:exported="false" />
         <activity
             android:name=".ui.donate.DonateActivity"
-            android:exported="true" >
-            <intent-filter>
+            android:exported="false" >
+<!--             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> -->
         </activity>
         <activity
             android:name=".ui.detailaksi.DetailAksiActivity"

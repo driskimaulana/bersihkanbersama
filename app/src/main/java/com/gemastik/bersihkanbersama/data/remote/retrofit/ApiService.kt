@@ -2,6 +2,7 @@ package com.gemastik.bersihkanbersama.data.remote.retrofit
 
 import com.gemastik.bersihkanbersama.data.remote.request.DonationRequest
 import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
+import com.gemastik.bersihkanbersama.data.remote.request.SignInRequest
 import com.gemastik.bersihkanbersama.data.remote.response.ArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponseWithNoData
@@ -33,18 +34,14 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
-    @FormUrlEncoded
     @POST("user/signin")
     fun userSignIn(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body signInRequest: SignInRequest
     ): Call<CommonResponse<UserSignInResponse>>
 
-    @FormUrlEncoded
     @POST("organization/signin")
     fun organizationSignIn(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body signInRequest: SignInRequest
     ): Call<CommonResponse<OrganizationSignInResponse>>
 
     @FormUrlEncoded
