@@ -22,4 +22,7 @@
     <string name="tv_forum">Forum</string>
     <string name="tv_loading">Loading</string>
     <string name="tv_shop">Point Shop</string>
+    <string name="title_activity_onboarding">OnboardingActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
 </resources>
