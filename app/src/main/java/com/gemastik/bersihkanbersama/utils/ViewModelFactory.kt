@@ -11,6 +11,7 @@ import com.gemastik.bersihkanbersama.data.repositories.ArticleRepository
 import com.gemastik.bersihkanbersama.data.repositories.AuthRepository
 import com.gemastik.bersihkanbersama.data.repositories.DonationRepository
 import com.gemastik.bersihkanbersama.di.Injection
+import com.gemastik.bersihkanbersama.ui.viewmodels.DonationViewModel
 import com.gemastik.bersihkanbersama.ui.login.LoginViewModel
 import com.gemastik.bersihkanbersama.ui.register.RegisterViewModel
 
@@ -20,10 +21,12 @@ class ViewModelFactory private constructor(
     private val donationRepository: DonationRepository,
     private val articleRepository: ArticleRepository
 ) : ViewModelProvider.NewInstanceFactory() {
+    //TODO
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(authRepository) as T
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> RegisterViewModel(authRepository) as T
+            modelClass.isAssignableFrom(DonationViewModel::class.java) -> DonationViewModel(donationRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -45,4 +48,6 @@ class ViewModelFactory private constructor(
                 instance = it
             }
     }
+
+
 }

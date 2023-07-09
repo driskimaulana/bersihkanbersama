@@ -3,12 +3,17 @@ package com.gemastik.bersihkanbersama.data.remote.response
 import com.google.gson.annotations.SerializedName
 
 data class PaymentDetailsResponse(
-    @field:SerializedName("Amount")
-    val amount: Int,
+    @SerializedName("paymentDetails")
+    val paymentDetails: PaymentDetails
+)
 
-    @field:SerializedName("PaymentUrl")
+data class PaymentDetails(
+    @SerializedName("Amount")
+    val amount: Double,
+
+    @SerializedName("PaymentUrl")
     val paymentUrl: String,
 
-    @field:SerializedName("Status")
+    @SerializedName("Status")
     val status: String
 )
