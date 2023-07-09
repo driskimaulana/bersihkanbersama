@@ -1,12 +1,59 @@
 package com.gemastik.bersihkanbersama.ui.donate
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.gemastik.bersihkanbersama.R
+import com.gemastik.bersihkanbersama.databinding.ActivityDonateBinding
+import com.gemastik.bersihkanbersama.databinding.ActivityLoginBinding
+import java.text.NumberFormat
+import java.util.Locale
 
 class DonateActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDonateBinding
+    private lateinit var donasiCardViews: List<DonasiCardView>
+    private var totalPrice = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_donate)
+        binding = ActivityDonateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        donasiCardViews = listOf(
+            binding.donasiCardView1,
+            binding.donasiCardView2,
+            binding.donasiCardView3,
+            binding.donasiCardView4,
+            binding.donasiCardView5,
+            binding.donasiCardView6
+        )
+
+        observeDonasiCardViews()
+        calculateTotalPrice()
+    }
+
+    private fun observeDonasiCardViews() {
+        donasiCardViews.forEach { donasiCardView ->
+            donasiCardView.totalPrice.observe(this, Observer {
+                calculateTotalPrice()
+            })
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun calculateTotalPrice() {
+        totalPrice = donasiCardViews.sumOf { donasiCardView ->
+            donasiCardView.totalPrice.value ?: 0
+        }
+        binding.textView26.text = formatPrice(totalPrice)
+    }
+
+    fun formatPrice(price: Int): String {
+        val formattedPrice = NumberFormat.getNumberInstance(Locale.getDefault()).format(price)
+        return "Rp $formattedPrice"
     }
 }
