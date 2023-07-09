@@ -8,26 +8,21 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.gemastik.bersihkanbersama.R
-import com.gemastik.bersihkanbersama.data.models.CreateNewDonation
+import androidx.lifecycle.lifecycleScope
+import com.gemastik.bersihkanbersama.data.models.AccountModel
 import com.gemastik.bersihkanbersama.data.models.DonationItem
 import com.gemastik.bersihkanbersama.data.remote.request.DonationItemRequest
 import com.gemastik.bersihkanbersama.data.remote.request.DonationRequest
 import com.gemastik.bersihkanbersama.databinding.ActivityDonateBinding
-import com.gemastik.bersihkanbersama.databinding.ActivityLoginBinding
 import com.gemastik.bersihkanbersama.ui.DonationPayment.DonationPaymentActivity
 import com.gemastik.bersihkanbersama.ui.viewmodels.DonationViewModel
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 import java.text.NumberFormat
 import java.util.Locale
-import com.gemastik.bersihkanbersama.utils.Utils.formatPrice
+import kotlinx.coroutines.launch
 
 class DonateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDonateBinding
@@ -48,10 +43,19 @@ class DonateActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
 
+    private lateinit var user: AccountModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDonateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+                Log.d("driskidebug", "testt")
+        lifecycleScope.launch {
+            viewModel.getAccount().collect{
+                user = it
+            }
+        }
 
         donasiCardViews = listOf(
             binding.donasiCardView1,
@@ -92,6 +96,7 @@ class DonateActivity : AppCompatActivity() {
             if (totalPrice != 0){
                 proceedToPayment()
             }else {
+                Log.d("driskidebug", user.toString())
                 Toast.makeText(applicationContext, "Masukkan donasi anda.", Toast.LENGTH_SHORT).show()
             }
         })
@@ -101,13 +106,10 @@ class DonateActivity : AppCompatActivity() {
         var donationItem = listOf<DonationItemRequest>(
             DonationItemRequest("Donasi Lain", 1, binding.edtBiayalain.text.toString().toDouble())
         )
-
         var donationBody = DonationRequest(donationItem, binding.checkBox.isChecked)
-        Log.d("driskidebug", donationBody.toString())
-
 
         viewModel.createNewDonation(
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VySWQiOiI2NGE5NWFmNzQ2YmEwOTZlYzgxY2JjZTIifQ._sPFD6cf8-QglPfLXvxMZKUB7Y-aNycjHDN6JQ_uxqI",
+            user.token,
                     "64a90e8218492cef048bd8d7",
                     donationBody
             ).observe(this) {
