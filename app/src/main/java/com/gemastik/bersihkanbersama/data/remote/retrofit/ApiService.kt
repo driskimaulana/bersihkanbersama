@@ -16,6 +16,7 @@ import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResp
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
 import com.gemastik.bersihkanbersama.data.remote.response.PaymentDetailsResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UpdateActivityResponse
+import com.gemastik.bersihkanbersama.data.remote.response.UserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignUpResponse
 import okhttp3.MultipartBody
@@ -33,6 +34,11 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
+    @GET("users")
+    fun getUser(
+        @Header("Authorization") token: String
+    ): Call<CommonResponse<UserResponse>>
+
     @FormUrlEncoded
     @POST("user/signin")
     fun userSignIn(
