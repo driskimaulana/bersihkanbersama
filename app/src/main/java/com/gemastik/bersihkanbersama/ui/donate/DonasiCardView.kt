@@ -37,6 +37,9 @@ class DonasiCardView @JvmOverloads constructor(
     private val _totalPrice = MutableLiveData<Int>()
     val totalPrice: LiveData<Int> get() = _totalPrice
 
+    private val _itemCount = MutableLiveData<Int>()
+    val itemCount: LiveData<Int> get() = _itemCount
+
     init {
         LayoutInflater.from(context).inflate(R.layout.sample_donasi_card_view, this, true)
 
@@ -74,6 +77,7 @@ class DonasiCardView @JvmOverloads constructor(
     }
 
     private fun updateTotalPrice() {
+        _itemCount.value = counter
         _totalPrice.value = counter * donatePrice
     }
 }
