@@ -3,15 +3,9 @@ package com.gemastik.bersihkanbersama.ui.donate
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.gemastik.bersihkanbersama.R
 import com.gemastik.bersihkanbersama.databinding.ActivityDonateBinding
-import com.gemastik.bersihkanbersama.databinding.ActivityLoginBinding
-import java.text.NumberFormat
-import java.util.Locale
+import com.gemastik.bersihkanbersama.utils.Utils.formatPrice
 
 class DonateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDonateBinding
@@ -52,8 +46,5 @@ class DonateActivity : AppCompatActivity() {
         binding.textView26.text = formatPrice(totalPrice)
     }
 
-    fun formatPrice(price: Int): String {
-        val formattedPrice = NumberFormat.getNumberInstance(Locale.getDefault()).format(price)
-        return "Rp $formattedPrice"
-    }
+
 }

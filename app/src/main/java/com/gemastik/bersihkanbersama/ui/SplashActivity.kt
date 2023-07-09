@@ -8,6 +8,7 @@ import com.gemastik.bersihkanbersama.ui.chooserole.ChooseRoleActivity
 import com.gemastik.bersihkanbersama.ui.donate.DonateActivity
 import com.gemastik.bersihkanbersama.ui.login.LoginActivity
 import com.gemastik.bersihkanbersama.ui.login.LoginOrgActivity
+import com.gemastik.bersihkanbersama.ui.onboarding.OnBoardingActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -19,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             delay(3000)
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            startActivity(Intent(this@SplashActivity, OnBoardingActivity::class.java))
             finish()
         }
     }
