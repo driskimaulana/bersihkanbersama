@@ -27,9 +27,8 @@ data class UserResponse(
     @field:SerializedName("Points")
     val points: PointsResponse,
 
-    // TODO DATA TYPE
     @field:SerializedName("Activity")
-    val activity: String? = null,
+    val activities: List<String>? = null,
 
     @field:SerializedName("CreatedAt")
     val createdAt: String,

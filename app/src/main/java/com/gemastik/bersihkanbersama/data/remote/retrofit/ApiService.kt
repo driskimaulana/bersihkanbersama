@@ -1,20 +1,28 @@
 package com.gemastik.bersihkanbersama.data.remote.retrofit
 
+import com.gemastik.bersihkanbersama.data.remote.request.DonationRequest
+import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
+import com.gemastik.bersihkanbersama.data.remote.response.ArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
+import com.gemastik.bersihkanbersama.data.remote.response.CommonResponseWithNoData
 import com.gemastik.bersihkanbersama.data.remote.response.CreateNewActivityResponse
+import com.gemastik.bersihkanbersama.data.remote.response.CreateNewArticleResponse
+import com.gemastik.bersihkanbersama.data.remote.response.CreateNewDonationResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetAllActivityResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetAllArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.response.LeaderboardResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
+import com.gemastik.bersihkanbersama.data.remote.response.PaymentDetailsRequest
 import com.gemastik.bersihkanbersama.data.remote.response.UpdateActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignUpResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
-import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -48,22 +56,10 @@ interface ApiService {
         @Field("password") password: String
     ): Call<CommonResponse<UserSignUpResponse>>
 
-    @FormUrlEncoded
     @POST("organization/signup")
     fun organizationSignUp(
-        @Field("name") name: String,
-        @Field("description") description: String,
-        @Field("email") email: String,
-        @Field("password") password: String,
-        @FieldMap contact: HashMap<String, RequestBody>
-    ): Call<CommonResponse<OrganizationSignUpResponse>>
-
-    /* TODO try using request body not form url encoded
-    @POST("organization/signup")
-    fun organizationSignUpBody(
         @Body request: OrganizationSignUpRequest
     ): Call<CommonResponse<OrganizationSignUpResponse>>
-     */
 
     @Multipart
     @POST("activity")
@@ -101,7 +97,11 @@ interface ApiService {
         @Path("id") id: String
     ): Call<CommonResponse<UpdateActivityResponse>>
 
-    // TODO REGISTER TO ACTIVITY
+    @PUT("activity/register/{id}")
+    fun registerToActivity(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Call<CommonResponse<UpdateActivityResponse>>
 
     @PUT("activity/teamresults/{id}")
     fun addTeamResults(
@@ -113,4 +113,41 @@ interface ApiService {
     fun leaderboard(
         @Path("id") id: String
     ): Call<CommonResponse<LeaderboardResponse>>
+
+    @POST("activity/donate/{id}")
+    fun createNewDonation(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body requestBody: DonationRequest
+    ): Call<CommonResponse<CreateNewDonationResponse>>
+
+    @GET("activity/donate/details/{id}")
+    fun getPaymentDetails(
+        @Path("id") id: String
+    ): Call<CommonResponse<PaymentDetailsRequest>>
+
+    @FormUrlEncoded
+    @POST("webhooks/xendit")
+    fun paidWebhooks(
+        @Field("id") id: String,
+        @Field("status") status: String
+    ): Call<CommonResponseWithNoData>
+
+    @Multipart
+    @POST("article")
+    fun createNewArticle(
+        @Part("title") title: RequestBody,
+        @Part("summary") summary: RequestBody,
+        @Part("writer") writer: RequestBody,
+        @Part("content") content: RequestBody,
+        @Part("coverImage") coverImage: MultipartBody.Part
+    ): Call<CommonResponse<CreateNewArticleResponse>>
+
+    @GET("article")
+    fun getAllArticle(): Call<CommonResponse<GetAllArticleResponse>>
+
+    @GET("article/{id}")
+    fun getArticleById(
+        @Path("id") id: String
+    ): Call<CommonResponse<ArticleResponse>>
 }

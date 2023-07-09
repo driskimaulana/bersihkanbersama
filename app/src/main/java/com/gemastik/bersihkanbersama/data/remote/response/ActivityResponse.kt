@@ -18,6 +18,9 @@ data class ActivityResponse(
     @field:SerializedName("EventDate")
     val eventDate: String,
 
+    @field:SerializedName("Location")
+    val location: LocationResponse,
+
     @field:SerializedName("CoverImage")
     val coverImage: String,
 
@@ -30,7 +33,8 @@ data class ActivityResponse(
     @field:SerializedName("Rewards")
     val rewards: RewardsResponse,
 
-    // TODO Donation
+    @field:SerializedName("DonationActivity")
+    val donationActivity: DonationActivityResponse,
 
     @field:SerializedName("CreatedAt")
     val createdAt: String,

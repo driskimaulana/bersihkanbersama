@@ -34,7 +34,7 @@ data class OrganizationResponse(
     val contact: ContactResponse,
 
     @field:SerializedName("Activities")
-    val activities: Any? = null, // TODO
+    val activities: List<String>?,
 
     @field:SerializedName("CreatedAt")
     val createdAt: String,
