@@ -20,11 +20,38 @@
             android:exported="true"
             android:label="@string/title_activity_onboarding"
             android:theme="@style/Base.Theme.OnBoardingBersihkanbersama">
-            <intent-filter>
+<!--             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> -->
+        </activity>
+        <activity 
+            android:name=".ui.addhasilkilo.AddHasilKiloActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.chooserole.ChooseRoleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.register.RegisterOrgActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.LoginOrgActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".ui.aksiberlangsung.AksiBerlangsungActivity"
@@ -37,13 +64,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

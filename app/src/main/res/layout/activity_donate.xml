@@ -45,13 +45,84 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <com.gemastik.bersihkanbersama.ui.donate.DonasiCardView
-        android:id="@+id/donasiCardView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:id="@+id/donasiCardView1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:imageCardDonasi="@drawable/ic_water_824239"
+        app:donateName="Air Mineral"
+        app:donatePrice="20000"
+        app:layout_constraintEnd_toStartOf="@+id/donasiCardView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <com.gemastik.bersihkanbersama.ui.donate.DonasiCardView
+        android:id="@+id/donasiCardView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:imageCardDonasi="@drawable/ic_gloves_2679094"
+        app:donateName="Sarung Tangan"
+        app:donatePrice="30000"
+        app:layout_constraintBottom_toBottomOf="@+id/donasiCardView1"
+        app:layout_constraintEnd_toStartOf="@+id/donasiCardView3"
+        app:layout_constraintStart_toEndOf="@+id/donasiCardView1"
+        app:layout_constraintTop_toTopOf="@+id/donasiCardView1" />
+
+    <com.gemastik.bersihkanbersama.ui.donate.DonasiCardView
+        android:id="@+id/donasiCardView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:imageCardDonasi="@drawable/ic_garbage_bag_5495948"
+        app:donateName="Plastik Sampah"
+        app:donatePrice="10000"
+        app:layout_constraintBottom_toBottomOf="@+id/donasiCardView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/donasiCardView2"
+        app:layout_constraintTop_toTopOf="@+id/donasiCardView1" />
+
+    <com.gemastik.bersihkanbersama.ui.donate.DonasiCardView
+        android:id="@+id/donasiCardView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:imageCardDonasi="@drawable/ic_water_824239"
+        app:donateName="Air Mineral"
+        app:donatePrice="40000"
+        app:layout_constraintEnd_toStartOf="@+id/donasiCardView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donasiCardView1" />
+
+    <com.gemastik.bersihkanbersama.ui.donate.DonasiCardView
+        android:id="@+id/donasiCardView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:imageCardDonasi="@drawable/ic_gloves_2679094"
+        app:donateName="Air Mineral"
+        app:donatePrice="50000"
+        app:layout_constraintBottom_toBottomOf="@+id/donasiCardView4"
+        app:layout_constraintEnd_toStartOf="@+id/donasiCardView6"
+        app:layout_constraintStart_toEndOf="@+id/donasiCardView4"
+        app:layout_constraintTop_toTopOf="@+id/donasiCardView4" />
+
+    <com.gemastik.bersihkanbersama.ui.donate.DonasiCardView
+        android:id="@+id/donasiCardView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:imageCardDonasi="@drawable/ic_garbage_bag_5495948"
+        app:donateName="Air Mineral"
+        app:donatePrice="60000"
+        app:layout_constraintBottom_toBottomOf="@+id/donasiCardView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/donasiCardView5"
+        app:layout_constraintTop_toTopOf="@+id/donasiCardView4" />
 
     <EditText
         android:id="@+id/searchInput"
@@ -67,13 +138,14 @@
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donasiCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/donasiCardView4" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         app:cardBackgroundColor="@color/bg_gray"
@@ -112,8 +184,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView25"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView25"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/textView25" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
