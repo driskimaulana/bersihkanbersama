@@ -9,6 +9,7 @@ import com.gemastik.bersihkanbersama.data.models.OrganizationModel
 import com.gemastik.bersihkanbersama.data.models.OrganizationSignUpModel
 import com.gemastik.bersihkanbersama.data.models.UserModel
 import com.gemastik.bersihkanbersama.data.models.UserSignUpModel
+import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
@@ -17,7 +18,6 @@ import com.gemastik.bersihkanbersama.data.remote.response.UserSignUpResponse
 import com.gemastik.bersihkanbersama.data.remote.retrofit.ApiService
 import com.gemastik.bersihkanbersama.utils.DataMapper
 import com.gemastik.bersihkanbersama.utils.Result
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -152,15 +152,11 @@ class AuthRepository private constructor(
     }
 
     fun organizationSignUp(
-        name: String,
-        description: String,
-        email: String,
-        password: String,
-        contact: HashMap<String, RequestBody>
+        requestBody: OrganizationSignUpRequest
     ): LiveData<Result<OrganizationSignUpModel>> {
         organizationSignUpResult.value = Result.Loading
 
-        val client = apiService.organizationSignUp(name, description, email, password, contact)
+        val client = apiService.organizationSignUp(requestBody)
         client.enqueue(object : Callback<CommonResponse<OrganizationSignUpResponse>> {
             override fun onResponse(
                 call: Call<CommonResponse<OrganizationSignUpResponse>>,
