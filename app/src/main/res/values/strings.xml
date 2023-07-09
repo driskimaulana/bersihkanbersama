@@ -22,6 +22,4 @@
     <string name="tv_forum">Forum</string>
     <string name="tv_loading">Loading</string>
     <string name="tv_shop">Point Shop</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
