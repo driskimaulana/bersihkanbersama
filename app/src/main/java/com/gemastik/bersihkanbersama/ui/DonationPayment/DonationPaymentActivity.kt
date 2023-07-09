@@ -11,14 +11,20 @@ import androidx.activity.viewModels
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import com.gemastik.bersihkanbersama.R
+import com.gemastik.bersihkanbersama.data.models.PaymentDetailsModel
 import com.gemastik.bersihkanbersama.databinding.ActivityDonationPaymentBinding
+import com.gemastik.bersihkanbersama.ui.viewmodels.DonationViewModel
+import com.gemastik.bersihkanbersama.utils.Result
+import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.util.Locale
 
 class DonationPaymentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDonationPaymentBinding
-//    private val viewModel: OrderListViewModel by viewModels {
-//        ViewModelFactory.getInstance(this)
-//    }
+    private val viewModel: DonationViewModel by viewModels {
+        ViewModelFactory.getInstance(this)
+    }
 
 //    private lateinit var userData: UserData
 
@@ -46,7 +52,6 @@ class DonationPaymentActivity : AppCompatActivity() {
         pullToRefresh.setOnRefreshListener { // your code
             pullToRefresh.isRefreshing = false
             getData(id.toString())
-            Log.d("driskidebug", "onCreate: Refresh")
         }
 
 
@@ -54,62 +59,55 @@ class DonationPaymentActivity : AppCompatActivity() {
 
     private fun getData(id: String) {
 
-//        if (id != "") {
-//            viewModel.getCustomerOrderPaymentDetails(userData.token, id.toInt()).observe(this) {
-//                if (it != null) {
-//                    when (it) {
-//                        is Result.Loading -> {
-//                            loadingState(true)
-//                        }
-//
-//                        is Result.Success -> {
-//                            loadingState(false)
-//                            assignData(it.data)
-//                            Log.d("driskidebug", "getData: $it")
-//                        }
-//
-//                        is Result.Error -> {
-//                            loadingState(false)
-//                            Toast.makeText(this, it.error, Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        if (id != "") {
+            viewModel.getPaymentDetails(id).observe(this) {
+                if (it != null) {
+                    when (it) {
+                        is Result.Loading -> {
+                            loadingState(true)
+                        }
+
+                        is Result.Success -> {
+                            loadingState(false)
+                            assignData(it.data)
+                        }
+
+                        is Result.Error -> {
+                            loadingState(false)
+                            Toast.makeText(this, it.error, Toast.LENGTH_SHORT).show()
+                        }
+
+                        else -> {
+                            Toast.makeText(applicationContext, "Failed to parse result", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
     }
 
-//    private fun assignData(paymentDetails: PaymentDetailsModel){
-//        binding.apply {
-//            if (paymentDetails.status.equals("SETTLED")){
-//                layoutWaitingPayment.visibility = View.GONE
-//                layoutPaymentSuccess.visibility = View.VISIBLE
-//                layoutPaymentExpired.visibility = View.GONE
-//                btnPayDetails.setOnClickListener{
-//                    Log.d("driskidebug", "assignData: Clicked")
-//                    val i =  Intent(Intent.ACTION_VIEW)
-//                    i.setData(Uri.parse(paymentDetails.url))
-//                    it.context.startActivity(i)
-//                }
-//            }else if(paymentDetails.status.equals("EXPIRED")){
-//                layoutWaitingPayment.visibility = View.GONE
-//                layoutPaymentSuccess.visibility = View.GONE
-//                layoutPaymentExpired.visibility = View.VISIBLE
-//
-//                btnBack.setOnClickListener{
-//                    super.onBackPressed()
-//                }
-//            }
-//            else {
+    private fun assignData(paymentDetails: PaymentDetailsModel){
+        binding.apply {
+            if (paymentDetails.status.equals("Paid")){
+                layoutWaitingPayment.visibility = View.GONE
+                layoutPaymentSuccess.visibility = View.VISIBLE
+                btnPayDetails.setOnClickListener{
+                    val i =  Intent(Intent.ACTION_VIEW)
+                    i.setData(Uri.parse(paymentDetails.paymentUrl))
+                    it.context.startActivity(i)
+                }
+            }
+            else {
 //                tvpayAmount.text = "Rp ${paymentDetails.amount}"
-//                btnPayHere.setOnClickListener{
-//                    Log.d("driskidebug", "assignData: Clicked")
-//                    val i =  Intent(Intent.ACTION_VIEW)
-//                    i.setData(Uri.parse(paymentDetails.url))
-//                    it.context.startActivity(i)
-//                }
-//            }
-//        }
-//    }
+                tvpayAmount.text = formatPrice(paymentDetails.amount)
+                btnPayHere.setOnClickListener{
+                    val i =  Intent(Intent.ACTION_VIEW)
+                    i.setData(Uri.parse(paymentDetails.paymentUrl))
+                    it.context.startActivity(i)
+                }
+            }
+        }
+    }
 
     private fun loadingState(isLoading: Boolean) {
         if (isLoading) {
@@ -123,5 +121,10 @@ class DonationPaymentActivity : AppCompatActivity() {
                 paymentDetailsLoading.visibility = View.GONE
             }
         }
+    }
+
+    fun formatPrice(price: Double): String {
+        val formattedPrice = NumberFormat.getNumberInstance(Locale.getDefault()).format(price)
+        return "Rp $formattedPrice"
     }
 }

@@ -103,37 +103,37 @@ class DonateActivity : AppCompatActivity() {
 
         var donationBody = DonationRequest(donationItem, binding.checkBox.isChecked)
         Log.d("driskidebug", donationBody.toString())
-        val intent = Intent(this, DonationPaymentActivity::class.java)
-        intent.putExtra("id", "64aaa81bbcfb0bd8d4cb2592")
-        startActivity(intent)
 
 
-//        viewModel.createNewDonation(
-//            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VySWQiOiI2NGE5NWFmNzQ2YmEwOTZlYzgxY2JjZTIifQ._sPFD6cf8-QglPfLXvxMZKUB7Y-aNycjHDN6JQ_uxqI",
-//                    "64a90e8218492cef048bd8d7",
-//                    donationBody
-//            ).observe(this) {
-//            if (it != null) {
-//                Log.d("driskidebug", "changePassword: ${it}")
-//                when (it) {
-//                    is com.gemastik.bersihkanbersama.utils.Result.Loading -> {
-//                        loadingState(true)
-//                    }
-//                    is com.gemastik.bersihkanbersama.utils.Result.Success -> {
-//                        Toast.makeText(this, "Create new donation success.", Toast.LENGTH_SHORT)
-//                        loadingState(false)
-//                        super.onBackPressed()
-//                    }
-//                    is com.gemastik.bersihkanbersama.utils.Result.Error -> {
-//                        loadingState(false)
-//                        Toast.makeText(this, it.error, Toast.LENGTH_SHORT)
-//                            .show()
-//                    }
-//
-//                    else -> {}
-//                }
-//            }
-//        }
+        viewModel.createNewDonation(
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VySWQiOiI2NGE5NWFmNzQ2YmEwOTZlYzgxY2JjZTIifQ._sPFD6cf8-QglPfLXvxMZKUB7Y-aNycjHDN6JQ_uxqI",
+                    "64a90e8218492cef048bd8d7",
+                    donationBody
+            ).observe(this) {
+            if (it != null) {
+                when (it) {
+                    is com.gemastik.bersihkanbersama.utils.Result.Loading -> {
+                        loadingState(true)
+                    }
+                    is com.gemastik.bersihkanbersama.utils.Result.Success -> {
+                        loadingState(false)
+                        val intent = Intent(this, DonationPaymentActivity::class.java)
+                        intent.putExtra("id", it.data)
+                        startActivity(intent)
+                        super.onBackPressed()
+                    }
+                    is com.gemastik.bersihkanbersama.utils.Result.Error -> {
+                        loadingState(false)
+                        Toast.makeText(this, "ERRORR", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                    else -> {
+                        Log.d("driskidebug", "Error")
+                    }
+                }
+            }
+        }
 
     }
 

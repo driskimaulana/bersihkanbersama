@@ -13,4 +13,8 @@ class DonationViewModel(private val donationRepository: DonationRepository) : Vi
                            requestBody: DonationRequest
     ) = donationRepository.createNewDonation(token, id, requestBody)
 
+    fun getPaymentDetails(
+        id: String
+    ) = donationRepository.getPaymentDetails(id)
+
 }
