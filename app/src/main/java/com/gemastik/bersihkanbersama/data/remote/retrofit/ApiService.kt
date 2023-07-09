@@ -14,7 +14,7 @@ import com.gemastik.bersihkanbersama.data.remote.response.GetAllArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.response.LeaderboardResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
-import com.gemastik.bersihkanbersama.data.remote.response.PaymentDetailsRequest
+import com.gemastik.bersihkanbersama.data.remote.response.PaymentDetailsResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UpdateActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignUpResponse
@@ -124,7 +124,7 @@ interface ApiService {
     @GET("activity/donate/details/{id}")
     fun getPaymentDetails(
         @Path("id") id: String
-    ): Call<CommonResponse<PaymentDetailsRequest>>
+    ): Call<CommonResponse<PaymentDetailsResponse>>
 
     @FormUrlEncoded
     @POST("webhooks/xendit")
