@@ -3,6 +3,7 @@ package com.gemastik.bersihkanbersama.data.repositories
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.gemastik.bersihkanbersama.data.models.AllActivityModel
 import com.gemastik.bersihkanbersama.data.models.CreateNewActivityModel
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CreateNewActivityResponse
@@ -22,6 +23,7 @@ class ActivityRepository private constructor(
     private val apiService: ApiService
 ) {
     private val createNewActivityResult = MediatorLiveData<Result<CreateNewActivityModel>>()
+    private val getAllActivity = MediatorLiveData<Result<AllActivityModel>>()
 
     fun createNewActivity(
         token: String,

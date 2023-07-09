@@ -42,11 +42,11 @@ object DataMapper {
                         productName = it.productName,
                         pointOut = it.pointOut,
                         pointIn = it.pointIn,
-                        createdAt = it.createdAt,
-                        updatedAt = it.updatedAt
+                        createdAt = it.createdAt
                     )
                 }
             ),
+            activities = input.activities,
             createdAt = input.createdAt,
             updatedAt = input.updatedAt,
             token = ""
@@ -72,6 +72,7 @@ object DataMapper {
                name = input.contact.name,
                phone = input.contact.phone
            ),
+           activities = input.activities,
            createdAt = input.createdAt,
            updatedAt = input.updatedAt,
            token = ""

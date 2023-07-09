@@ -10,7 +10,7 @@ data class OrganizationModel(
     val logo: String,
     val instagram: String,
     val contact: ContactModel,
-    // TODO ACTIVITY
+    val activities: List<String>?,
     val createdAt: String,
     val updatedAt: String,
     var token: String = ""

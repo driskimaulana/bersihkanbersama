@@ -8,7 +8,7 @@ data class UserModel(
     val email: String,
     val address: AddressModel,
     val points: PointsModel,
-    // TODO ACTIVITY
+    val activities: List<String>?,
     val createdAt: String,
     val updatedAt: String,
     var token: String = ""

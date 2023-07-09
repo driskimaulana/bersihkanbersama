@@ -5,6 +5,5 @@ data class PointHistoryModel(
     val productName: String,
     val pointOut: Int,
     val pointIn: Int,
-    val createdAt: String,
-    val updatedAt: String
+    val createdAt: String
 )
