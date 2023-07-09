@@ -26,7 +26,7 @@ class ViewModelFactory private constructor(
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(authRepository) as T
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> RegisterViewModel(authRepository) as T
-            modelClass.isAssignableFrom(DonationViewModel::class.java) -> DonationViewModel(donationRepository) as T
+            modelClass.isAssignableFrom(DonationViewModel::class.java) -> DonationViewModel(donationRepository, authRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

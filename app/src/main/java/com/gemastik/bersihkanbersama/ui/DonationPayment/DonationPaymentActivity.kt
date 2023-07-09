@@ -9,14 +9,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.lifecycleScope
-import com.gemastik.bersihkanbersama.R
 import com.gemastik.bersihkanbersama.data.models.PaymentDetailsModel
 import com.gemastik.bersihkanbersama.databinding.ActivityDonationPaymentBinding
 import com.gemastik.bersihkanbersama.ui.viewmodels.DonationViewModel
 import com.gemastik.bersihkanbersama.utils.Result
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
-import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
