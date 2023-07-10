@@ -7,6 +7,7 @@ import com.gemastik.bersihkanbersama.data.models.ActivityModel
 import com.gemastik.bersihkanbersama.data.models.AllActivityModel
 import com.gemastik.bersihkanbersama.data.models.CreateNewActivityModel
 import com.gemastik.bersihkanbersama.data.models.LeaderboardModel
+import com.gemastik.bersihkanbersama.data.remote.request.TeamResultRequest
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CreateNewActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetActivityResponse
@@ -16,6 +17,7 @@ import com.gemastik.bersihkanbersama.data.remote.response.UpdateActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.retrofit.ApiService
 import com.gemastik.bersihkanbersama.utils.DataMapper
 import com.gemastik.bersihkanbersama.utils.Result
+import com.google.gson.Gson
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -285,11 +287,15 @@ class ActivityRepository private constructor(
 
     fun addTeamResults(
         token: String,
-        id: String
+        id: String,
+        teamName: String,
+        result: Double
     ): LiveData<Result<ActivityModel>> {
         addTeamResultsResult.value = Result.Loading
 
-        val client = apiService.addTeamResults("Bearer $token", id)
+        val req = TeamResultRequest(teamName, result)
+
+        val client = apiService.addTeamResults("Bearer $token", id, req)
         client.enqueue(object : Callback<CommonResponse<UpdateActivityResponse>> {
             override fun onResponse(
                 call: Call<CommonResponse<UpdateActivityResponse>>,
@@ -298,6 +304,8 @@ class ActivityRepository private constructor(
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
                     if (responseBody.status == 200) {
+                        val json = Gson().toJson(responseBody.data.updatedActivity)
+                        Log.d("DEBUGNOVAL", json)
                         val data = DataMapper.mapActivityResponseToActivityModel(responseBody.data.updatedActivity)
                         addTeamResultsResult.value = Result.Success(data)
                     } else {

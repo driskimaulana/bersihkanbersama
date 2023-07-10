@@ -11,7 +11,9 @@ import com.gemastik.bersihkanbersama.data.repositories.ArticleRepository
 import com.gemastik.bersihkanbersama.data.repositories.AuthRepository
 import com.gemastik.bersihkanbersama.data.repositories.DonationRepository
 import com.gemastik.bersihkanbersama.di.Injection
+import com.gemastik.bersihkanbersama.ui.addhasilkilo.AddHasilKiloViewModel
 import com.gemastik.bersihkanbersama.ui.login.LoginViewModel
+import com.gemastik.bersihkanbersama.ui.main.MainViewModel
 import com.gemastik.bersihkanbersama.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
@@ -24,6 +26,8 @@ class ViewModelFactory private constructor(
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(authRepository) as T
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> RegisterViewModel(authRepository) as T
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> MainViewModel(authRepository) as T
+            modelClass.isAssignableFrom(AddHasilKiloViewModel::class.java) -> AddHasilKiloViewModel(authRepository, activityRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

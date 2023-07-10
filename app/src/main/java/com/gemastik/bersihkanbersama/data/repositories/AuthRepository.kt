@@ -11,6 +11,7 @@ import com.gemastik.bersihkanbersama.data.models.UserModel
 import com.gemastik.bersihkanbersama.data.models.UserSignUpModel
 import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
 import com.gemastik.bersihkanbersama.data.remote.request.SignInRequest
+import com.gemastik.bersihkanbersama.data.remote.request.UserSignUpRequest
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
@@ -82,7 +83,9 @@ class AuthRepository private constructor(
     ): LiveData<Result<UserSignUpModel>> {
         userSignUpResult.value = Result.Loading
 
-        val client = apiService.userSignUp(name, phone, email, password)
+        val req = UserSignUpRequest(name, phone, email, password)
+
+        val client = apiService.userSignUp(req)
         client.enqueue(object : Callback<CommonResponse<UserSignUpResponse>> {
             override fun onResponse(
                 call: Call<CommonResponse<UserSignUpResponse>>,
