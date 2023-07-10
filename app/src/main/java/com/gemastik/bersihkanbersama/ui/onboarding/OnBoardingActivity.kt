@@ -10,21 +10,31 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.gemastik.bersihkanbersama.R
 import com.gemastik.bersihkanbersama.databinding.ActivityOnboardingBinding
 import com.gemastik.bersihkanbersama.ui.MainActivity
 import com.gemastik.bersihkanbersama.ui.chooserole.ChooseRoleActivity
+import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 
 class OnBoardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
-
     private lateinit var onBoardingAdapter: OnBoardingAdapter
     private lateinit var indicatorlayout: LinearLayout
+    private val viewModel: OnboardingViewModel by viewModels {
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel.getAccount().observe(this@OnBoardingActivity) {
+            if (it.id != "") {
+                startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
+            }
+        }
 
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
