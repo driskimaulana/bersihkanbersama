@@ -13,8 +13,10 @@ import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpReque
 import com.gemastik.bersihkanbersama.data.remote.request.SignInRequest
 import com.gemastik.bersihkanbersama.data.remote.request.UserSignUpRequest
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetUserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
+import com.gemastik.bersihkanbersama.data.remote.response.UserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignUpResponse
 import com.gemastik.bersihkanbersama.data.remote.retrofit.ApiService
@@ -35,6 +37,40 @@ class AuthRepository private constructor(
     private val userSignUpResult = MediatorLiveData<Result<UserSignUpModel>>()
     private val organizationSignInResult = MediatorLiveData<Result<OrganizationModel>>()
     private val organizationSignUpResult = MediatorLiveData<Result<OrganizationSignUpModel>>()
+    private val getUserResult = MediatorLiveData<Result<UserModel>>()
+
+    fun getUser(token: String): LiveData<Result<UserModel>> {
+        getUserResult.value = Result.Loading
+
+        val client = apiService.getUser("Bearer $token")
+        client.enqueue(object : Callback<CommonResponse<GetUserResponse>> {
+            override fun onResponse(
+                call: Call<CommonResponse<GetUserResponse>>,
+                response: Response<CommonResponse<GetUserResponse>>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()!!
+                    if (responseBody.status == 200) {
+                        val user = DataMapper.mapUserResponseToUserModel(responseBody.data.user)
+                        getUserResult.value = Result.Success(user)
+                    } else {
+                        Log.e("ERROR", "onResponse: ${responseBody.message}")
+                        getUserResult.value = Result.Error(responseBody.message)
+                    }
+                } else {
+                    Log.e("ERROR", "onResponse: ${response.message()}")
+                    getUserResult.value = Result.Error(response.message())
+                }
+            }
+
+            override fun onFailure(call: Call<CommonResponse<GetUserResponse>>, t: Throwable) {
+                Log.e("ERROR", "onFailure: ${t.message.toString()}")
+                getUserResult.value = Result.Error(t.message.toString())
+            }
+        })
+
+        return getUserResult
+    }
 
     fun userSignIn(
         email: String,
@@ -174,7 +210,9 @@ class AuthRepository private constructor(
                     val responseBody = response.body()!!
                     if (responseBody.status == 201) {
                         val data =
-                            DataMapper.mapOrganizationSignUpResponseToOrganizationSignUpModel(responseBody.data)
+                            DataMapper.mapOrganizationSignUpResponseToOrganizationSignUpModel(
+                                responseBody.data
+                            )
                         organizationSignUpResult.value = Result.Success(data)
                     } else {
                         Log.e("ERROR", "onResponse: ${responseBody.message}")

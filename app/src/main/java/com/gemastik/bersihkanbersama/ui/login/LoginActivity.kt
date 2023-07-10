@@ -51,7 +51,8 @@ class LoginActivity : AppCompatActivity() {
                 is Result.Success -> {
                     loadingState(false)
 
-                    val account = AccountModel(result.data.id, result.data.token, result.data.role)
+                    val account = AccountModel(result.data.id, result.data.name, result.data.token, result.data.role)
+
                     viewModel.saveAccount(account)
 
                     startMainActivity()

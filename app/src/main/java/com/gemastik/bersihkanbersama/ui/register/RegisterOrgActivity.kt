@@ -81,7 +81,7 @@ class RegisterOrgActivity : AppCompatActivity() {
                     loadingState(false)
 
                     val account =
-                        AccountModel(result.data.organizationId, result.data.token, "Organization")
+                        AccountModel(result.data.organizationId, "", result.data.token, "Organization")
                     viewModel.saveAccount(account)
 
                     startMainActivity()
