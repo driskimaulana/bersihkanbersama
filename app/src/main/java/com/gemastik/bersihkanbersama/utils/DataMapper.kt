@@ -10,6 +10,7 @@ import com.gemastik.bersihkanbersama.data.models.CreateNewActivityModel
 import com.gemastik.bersihkanbersama.data.models.DonationActivityModel
 import com.gemastik.bersihkanbersama.data.models.DonationModel
 import com.gemastik.bersihkanbersama.data.models.LeaderboardModel
+import com.gemastik.bersihkanbersama.data.models.LocationModel
 import com.gemastik.bersihkanbersama.data.models.OrganizationModel
 import com.gemastik.bersihkanbersama.data.models.OrganizationSignUpModel
 import com.gemastik.bersihkanbersama.data.models.PaymentDetailsModel
@@ -117,6 +118,12 @@ object DataMapper {
                     title = data.title,
                     description = data.description,
                     eventDate = data.eventDate,
+                    location = LocationModel(
+                        city = data.location.city,
+                        fullAddress = data.location.fullAddress,
+                        latitude = data.location.latitude,
+                        longitude = data.location.longitude
+                    ),
                     coverImage = data.coverImage,
                     volunteer = VolunteerModel(
                         count = data.volunteer.count,
@@ -150,7 +157,7 @@ object DataMapper {
                     ),
                     donationActivity = DonationActivityModel(
                         totalDonation = data.donationActivity.totalDonation,
-                        donationHistory = data.donationActivity.donationHistory.map {
+                        donationHistory = data.donationActivity.donationHistory?.map {
                             DonationModel(
                                 donationId = it.donationId,
                                 userName = it.userName,
@@ -171,6 +178,12 @@ object DataMapper {
             title = input.title,
             description = input.description,
             eventDate = input.eventDate,
+            location = LocationModel(
+                city = input.location.city,
+                fullAddress = input.location.fullAddress,
+                latitude = input.location.latitude,
+                longitude = input.location.longitude
+            ),
             coverImage = input.coverImage,
             volunteer = VolunteerModel(
                 count = input.volunteer.count,
@@ -204,7 +217,7 @@ object DataMapper {
             ),
             donationActivity = DonationActivityModel(
                 totalDonation = input.donationActivity.totalDonation,
-                donationHistory = input.donationActivity.donationHistory.map {
+                donationHistory = input.donationActivity.donationHistory?.map {
                     DonationModel(
                         donationId = it.donationId,
                         userName = it.userName,

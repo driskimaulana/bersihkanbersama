@@ -18,4 +18,8 @@ class DetailAksiActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    companion object {
+        const val ACTIVITY_EXTRA = "extra"
+    }
 }

@@ -11,6 +11,7 @@ import com.gemastik.bersihkanbersama.data.models.UserModel
 import com.gemastik.bersihkanbersama.data.models.UserSignUpModel
 import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetUserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserResponse
@@ -40,15 +41,15 @@ class AuthRepository private constructor(
         getUserResult.value = Result.Loading
 
         val client = apiService.getUser("Bearer $token")
-        client.enqueue(object : Callback<CommonResponse<UserResponse>> {
+        client.enqueue(object : Callback<CommonResponse<GetUserResponse>> {
             override fun onResponse(
-                call: Call<CommonResponse<UserResponse>>,
-                response: Response<CommonResponse<UserResponse>>
+                call: Call<CommonResponse<GetUserResponse>>,
+                response: Response<CommonResponse<GetUserResponse>>
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
                     if (responseBody.status == 200) {
-                        val user = DataMapper.mapUserResponseToUserModel(responseBody.data)
+                        val user = DataMapper.mapUserResponseToUserModel(responseBody.data.user)
                         getUserResult.value = Result.Success(user)
                     } else {
                         Log.e("ERROR", "onResponse: ${responseBody.message}")
@@ -60,7 +61,7 @@ class AuthRepository private constructor(
                 }
             }
 
-            override fun onFailure(call: Call<CommonResponse<UserResponse>>, t: Throwable) {
+            override fun onFailure(call: Call<CommonResponse<GetUserResponse>>, t: Throwable) {
                 Log.e("ERROR", "onFailure: ${t.message.toString()}")
                 getUserResult.value = Result.Error(t.message.toString())
             }

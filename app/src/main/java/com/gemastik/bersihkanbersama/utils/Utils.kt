@@ -14,6 +14,9 @@ import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 import java.util.Objects
 
@@ -63,5 +66,12 @@ object Utils {
         inputStream.close()
 
         return myFile
+    }
+
+    fun formatDate(currentDateString: String, targetTimeZone: String): String {
+        val instant = Instant.parse(currentDateString)
+        val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy | HH:mm")
+            .withZone(ZoneId.of(targetTimeZone))
+        return formatter.format(instant)
     }
 }

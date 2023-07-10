@@ -11,12 +11,13 @@ import com.gemastik.bersihkanbersama.data.remote.response.CreateNewDonationRespo
 import com.gemastik.bersihkanbersama.data.remote.response.GetActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetAllActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetAllArticleResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetArticleResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetUserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.LeaderboardResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
 import com.gemastik.bersihkanbersama.data.remote.response.PaymentDetailsResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UpdateActivityResponse
-import com.gemastik.bersihkanbersama.data.remote.response.UserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.UserSignUpResponse
 import okhttp3.MultipartBody
@@ -37,7 +38,7 @@ interface ApiService {
     @GET("users")
     fun getUser(
         @Header("Authorization") token: String
-    ): Call<CommonResponse<UserResponse>>
+    ): Call<CommonResponse<GetUserResponse>>
 
     @FormUrlEncoded
     @POST("user/signin")
@@ -155,5 +156,5 @@ interface ApiService {
     @GET("article/{id}")
     fun getArticleById(
         @Path("id") id: String
-    ): Call<CommonResponse<ArticleResponse>>
+    ): Call<CommonResponse<GetArticleResponse>>
 }

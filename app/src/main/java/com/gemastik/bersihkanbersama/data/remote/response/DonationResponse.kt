@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class DonationResponse(
     @field:SerializedName("DonationId")
-    val donationId: String,
+    val donationId: String?,
 
     @field:SerializedName("UserName")
-    val userName: String,
+    val userName: String?,
 
     @field:SerializedName("TotalDonation")
-    val totalDonation: Int
+    val totalDonation: Int?
 )

@@ -6,6 +6,7 @@ data class ActivityModel(
     val title: String,
     val description: String,
     val eventDate: String,
+    val location: LocationModel,
     val coverImage: String,
     val volunteer: VolunteerModel,
     val status: String,

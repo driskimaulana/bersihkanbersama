@@ -21,4 +21,8 @@ class AksiBerlangsungActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    companion object {
+        const val ACTIVITY_EXTRA = "extra"
+    }
 }
