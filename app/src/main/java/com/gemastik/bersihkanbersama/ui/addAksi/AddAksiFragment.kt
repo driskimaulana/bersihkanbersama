@@ -214,7 +214,7 @@ class AddAksiFragment : Fragment() {
                     is Result.Success -> {
                         loadingState(false)
                         val intent = Intent(requireContext(), DetailAksiActivity::class.java)
-                        intent.putExtra("id", it.data.activityId)
+                        intent.putExtra(DetailAksiActivity.ACTIVITY_EXTRA, it.data.activityId)
                         startActivity(intent)
                     }
 

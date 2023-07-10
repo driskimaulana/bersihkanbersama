@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.gemastik.bersihkanbersama.databinding.FragmentProfileBinding
-import com.gemastik.bersihkanbersama.ui.SplashActivity
+import com.gemastik.bersihkanbersama.ui.chooserole.ChooseRoleActivity
+import com.gemastik.bersihkanbersama.ui.splash.SplashActivity
 import com.gemastik.bersihkanbersama.ui.viewmodels.ProfileViewModel
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 
@@ -43,7 +44,7 @@ class ProfileFragment : Fragment() {
         binding?.btnLogout?.setOnClickListener {
             Log.d("driskidebug", "setupView: 1")
             viewModel.logout()
-            val intent = Intent(activity, SplashActivity::class.java)
+            val intent = Intent(activity, ChooseRoleActivity::class.java)
             startActivity(intent)
             activity?.finish()
         }

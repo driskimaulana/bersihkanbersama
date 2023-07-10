@@ -292,7 +292,10 @@ class ActivityRepository private constructor(
         result: Double
     ): LiveData<Result<ActivityModel>> {
         addTeamResultsResult.value = Result.Loading
-
+        Log.d("driskidebug", token)
+        Log.d("driskidebug", id)
+        Log.d("driskidebug", teamName)
+        Log.d("driskidebug", result.toString())
         val req = TeamResultRequest(teamName, result)
 
         val client = apiService.addTeamResults("Bearer $token", id, req)

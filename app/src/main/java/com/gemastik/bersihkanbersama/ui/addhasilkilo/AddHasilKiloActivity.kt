@@ -36,7 +36,7 @@ class AddHasilKiloActivity : AppCompatActivity() {
             account = it
         }
 
-        activityId = intent.getStringExtra("id") ?: "64a911e58c3a2a2d718716f1"
+        activityId = intent.getStringExtra("id") ?: ""
 
         initDropdownInputItemList()
 

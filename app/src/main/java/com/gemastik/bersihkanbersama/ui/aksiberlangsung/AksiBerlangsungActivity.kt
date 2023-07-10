@@ -30,16 +30,25 @@ class AksiBerlangsungActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 // RENDER ULANG
+                initialView()
                 Toast.makeText(this, "Sukses menambahkan", Toast.LENGTH_SHORT).show()
             }
         }
+
+    private lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAksiBerlangsungBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val id = intent.getStringExtra(DetailAksiActivity.ACTIVITY_EXTRA)
+        id = intent.getStringExtra(DetailAksiActivity.ACTIVITY_EXTRA).toString()
+
+        initialView()
+
+    }
+
+    private fun initialView(){
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvLeaderboard.layoutManager = layoutManager
@@ -128,7 +137,7 @@ class AksiBerlangsungActivity : AppCompatActivity() {
     private fun tambahHasilButtonAction() {
         binding.tambahHasil.setOnClickListener {
             val intent = Intent(this, AddHasilKiloActivity::class.java)
-            intent.putExtra("id", "64a911e58c3a2a2d718716f1")
+            intent.putExtra("id", id)
             resultLauncher.launch(intent)
         }
     }

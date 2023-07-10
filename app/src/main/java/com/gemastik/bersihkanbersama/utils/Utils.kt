@@ -104,9 +104,9 @@ object Utils {
         return formatter.format(instant)
     }
     val daftarTim: List<String> = listOf(
-        "Tim 1",
-        "Tim 2",
-        "Tim 3"
+        "Team 1",
+        "Team 2",
+        "Team 3"
     )
 
 }

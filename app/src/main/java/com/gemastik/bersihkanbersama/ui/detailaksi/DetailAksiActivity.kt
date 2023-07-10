@@ -25,12 +25,14 @@ class DetailAksiActivity : AppCompatActivity() {
     }
     private val donatorAdapter = DonatorListAdapter()
 
+    private lateinit var id: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailAksiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val id = intent.getStringExtra(ACTIVITY_EXTRA)
+        id = intent.getStringExtra(ACTIVITY_EXTRA).toString()
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
@@ -147,9 +149,10 @@ class DetailAksiActivity : AppCompatActivity() {
                                 setTitle("Sukses")
                                 setMessage("Anda berhasil mengikuti kegiatan")
                                 setPositiveButton("Ok") { _, _ ->
-                                    val intent = Intent(this@DetailAksiActivity, AksiBerlangsungActivity::class.java)
-                                    startActivity(intent)
-                                    finish()
+                                    finish();
+                                    overridePendingTransition(0, 0);
+                                    startActivity(getIntent());
+                                    overridePendingTransition(0, 0);
                                 }
                                 create()
                                 show()
@@ -169,6 +172,7 @@ class DetailAksiActivity : AppCompatActivity() {
     private fun startDonation() {
         binding.tvBantuDonasi.setOnClickListener {
             val intent = Intent(this, DonateActivity::class.java)
+            intent.putExtra("id", id)
             startActivity(intent)
         }
     }
