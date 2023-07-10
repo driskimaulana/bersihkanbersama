@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="Beranda"/>
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_chat"
+        android:title="Forum"/>
+    <item
+        android:id="@+id/action"
+        android:icon="@drawable/ic_task_actions_7274208"
+        android:title="Buat Aksi" />
+    <item
+        android:id="@+id/medal"
+        android:icon="@drawable/ic_medal"
+        android:title="Leaderboard" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
+</menu>

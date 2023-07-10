@@ -3,6 +3,8 @@ package com.gemastik.bersihkanbersama.data.remote.retrofit
 import com.gemastik.bersihkanbersama.data.remote.request.DonationRequest
 import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
 import com.gemastik.bersihkanbersama.data.remote.request.SignInRequest
+import com.gemastik.bersihkanbersama.data.remote.request.TeamResultRequest
+import com.gemastik.bersihkanbersama.data.remote.request.UserSignUpRequest
 import com.gemastik.bersihkanbersama.data.remote.response.ArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponseWithNoData
@@ -51,13 +53,9 @@ interface ApiService {
         @Body signInRequest: SignInRequest
     ): Call<CommonResponse<OrganizationSignInResponse>>
 
-    @FormUrlEncoded
     @POST("user/signup")
     fun userSignUp(
-        @Field("name") name: String,
-        @Field("phone") phone: String,
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body request: UserSignUpRequest
     ): Call<CommonResponse<UserSignUpResponse>>
 
     @POST("organization/signup")
@@ -76,7 +74,7 @@ interface ApiService {
         @Part("firstRewards") firstRewards: RequestBody,
         @Part("secondRewards") secondRewards: RequestBody,
         @Part("thirdRewards") thirdRewards: RequestBody,
-        @Part("coverImage") coverImage: MultipartBody.Part,
+        @Part coverImage: MultipartBody.Part,
         @Part("city") city: RequestBody,
         @Part("fullAddress") fullAddress: RequestBody
     ): Call<CommonResponse<CreateNewActivityResponse>>
@@ -110,7 +108,8 @@ interface ApiService {
     @PUT("activity/teamresults/{id}")
     fun addTeamResults(
         @Header("Authorization") token: String,
-        @Path("id") id: String
+        @Path("id") id: String,
+        @Body request: TeamResultRequest
     ): Call<CommonResponse<UpdateActivityResponse>>
 
     @GET("activity/leaderboard/{id}")

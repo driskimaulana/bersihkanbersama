@@ -15,7 +15,7 @@ import com.gemastik.bersihkanbersama.data.models.AccountModel
 import com.gemastik.bersihkanbersama.data.remote.request.ContactRequest
 import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
 import com.gemastik.bersihkanbersama.databinding.ActivityRegisterOrgBinding
-import com.gemastik.bersihkanbersama.ui.MainActivity
+import com.gemastik.bersihkanbersama.ui.main.MainActivity
 import com.gemastik.bersihkanbersama.ui.login.LoginActivity
 import com.gemastik.bersihkanbersama.utils.Result
 import com.gemastik.bersihkanbersama.utils.Utils.daftarKota
@@ -79,8 +79,6 @@ class RegisterOrgActivity : AppCompatActivity() {
 
                 is Result.Success -> {
                     loadingState(false)
-
-                    Log.d("DEBUGNOVAL", result.data.toString())
 
                     val account =
                         AccountModel(result.data.organizationId, "", result.data.token, "Organization")
