@@ -7,5 +7,5 @@ data class DonationActivityResponse(
     val totalDonation: Int,
 
     @field:SerializedName("DonationHistory")
-    val donationHistory: List<DonationResponse>,
+    val donationHistory: List<DonationResponse>?,
 )

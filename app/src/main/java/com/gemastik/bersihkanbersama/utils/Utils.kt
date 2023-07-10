@@ -94,4 +94,10 @@ object Utils {
         "Mataram"
     )
 
+    val daftarTim: List<String> = listOf(
+        "Tim 1",
+        "Tim 2",
+        "Tim 3"
+    )
+
 }

@@ -150,7 +150,7 @@ object DataMapper {
                     ),
                     donationActivity = DonationActivityModel(
                         totalDonation = data.donationActivity.totalDonation,
-                        donationHistory = data.donationActivity.donationHistory.map {
+                        donationHistory = data.donationActivity.donationHistory?.map {
                             DonationModel(
                                 donationId = it.donationId,
                                 userName = it.userName,
@@ -204,7 +204,7 @@ object DataMapper {
             ),
             donationActivity = DonationActivityModel(
                 totalDonation = input.donationActivity.totalDonation,
-                donationHistory = input.donationActivity.donationHistory.map {
+                donationHistory = input.donationActivity.donationHistory?.map {
                     DonationModel(
                         donationId = it.donationId,
                         userName = it.userName,
