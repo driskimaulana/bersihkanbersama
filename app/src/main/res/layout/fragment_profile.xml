@@ -13,10 +13,11 @@
 
         <ImageView
             android:id="@+id/iv_profile_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="50dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="60dp"
             android:contentDescription="@string/desc_profile_pic"
+            android:src="@drawable/user"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,9 +26,9 @@
         <Button
             android:id="@+id/btn_add_alamat"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="60dp"
             android:backgroundTint="@color/light_gray"
             android:drawableLeft="@drawable/baseline_library_books_24"
             android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
@@ -41,7 +42,7 @@
         <Button
             android:id="@+id/btn_account_setting"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/light_gray"
@@ -53,6 +54,38 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_add_alamat" />
+
+        <Button
+            android:id="@+id/btn_aksi_history"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/light_gray"
+            android:drawableLeft="@drawable/baseline_history_24"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:text="Riwayat Aksi"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_account_setting" />
+
+        <Button
+            android:id="@+id/btn_point_history"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/light_gray"
+            android:drawableLeft="@drawable/baseline_history_24"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:text="Histori Point"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_aksi_history" />
 
         <Button
             android:id="@+id/btn_logout"
