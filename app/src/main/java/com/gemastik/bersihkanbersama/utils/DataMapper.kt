@@ -241,9 +241,9 @@ object DataMapper {
 
     fun mapPaymentDetailsResponseToPaymentDetailsModel(input: PaymentDetailsResponse): PaymentDetailsModel =
         PaymentDetailsModel(
-            amount = input.amount,
-            paymentUrl = input.paymentUrl,
-            status = input.status
+            amount = input.paymentDetails.amount,
+            paymentUrl = input.paymentDetails.paymentUrl,
+            status = input.paymentDetails.status
         )
 
     fun mapGetAllArticleResponseToAllArticleModel(input: GetAllArticleResponse): AllArticleModel =

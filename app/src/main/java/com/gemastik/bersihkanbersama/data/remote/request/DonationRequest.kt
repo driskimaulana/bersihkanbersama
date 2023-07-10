@@ -18,5 +18,5 @@ data class DonationItemRequest(
     val count: Int,
 
     @field:SerializedName("price")
-    val price: Int
+    val price: Double
 )

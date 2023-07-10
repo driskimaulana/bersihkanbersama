@@ -20,17 +20,18 @@
             android:name=".ui.detailarticle.DetailArticleActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.DonationPayment.DonationPaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.onboarding.OnBoardingActivity"
             android:exported="true"
             android:label="@string/title_activity_onboarding"
             android:theme="@style/Base.Theme.OnBoardingBersihkanbersama">
+<!--             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
         </activity>
         <activity
             android:name=".ui.addhasilkilo.AddHasilKiloActivity"
@@ -55,7 +56,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -49,7 +49,7 @@ class ActivityListAdapter :
                 textView3.text = "${activity.volunteer.count} Mendaftar"
             }
             itemView.setOnClickListener {
-                if (activity.status == "Started") {
+                if (activity.status == "Not Started") {
                     val intent = Intent(itemView.context, DetailAksiActivity::class.java)
                     intent.putExtra(DetailAksiActivity.ACTIVITY_EXTRA, activity.id)
                     itemView.context.startActivity(intent)

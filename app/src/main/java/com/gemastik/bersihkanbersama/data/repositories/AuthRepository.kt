@@ -10,6 +10,7 @@ import com.gemastik.bersihkanbersama.data.models.OrganizationSignUpModel
 import com.gemastik.bersihkanbersama.data.models.UserModel
 import com.gemastik.bersihkanbersama.data.models.UserSignUpModel
 import com.gemastik.bersihkanbersama.data.remote.request.OrganizationSignUpRequest
+import com.gemastik.bersihkanbersama.data.remote.request.SignInRequest
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetUserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
@@ -76,7 +77,9 @@ class AuthRepository private constructor(
     ): LiveData<Result<UserModel>> {
         userSignInResult.value = Result.Loading
 
-        val client = apiService.userSignIn(email, password)
+        val signInReq = SignInRequest(email, password)
+
+        val client = apiService.userSignIn(signInReq)
         client.enqueue(object : Callback<CommonResponse<UserSignInResponse>> {
             override fun onResponse(
                 call: Call<CommonResponse<UserSignInResponse>>,
@@ -152,7 +155,9 @@ class AuthRepository private constructor(
     ): LiveData<Result<OrganizationModel>> {
         organizationSignInResult.value = Result.Loading
 
-        val client = apiService.organizationSignIn(email, password)
+        val signInReq = SignInRequest(email, password)
+
+        val client = apiService.organizationSignIn(signInReq)
         client.enqueue(object : Callback<CommonResponse<OrganizationSignInResponse>> {
             override fun onResponse(
                 call: Call<CommonResponse<OrganizationSignInResponse>>,

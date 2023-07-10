@@ -1,5 +1,6 @@
 package com.gemastik.bersihkanbersama.data.local
 
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -14,8 +15,10 @@ import kotlinx.coroutines.flow.map
 class AccountPreference private constructor(private val dataStore: DataStore<Preferences>) {
     fun getAccount(): Flow<AccountModel> =
         dataStore.data.map {
+            Log.d("driskidebug", it.toString())
             AccountModel(
                 id = it[ID_KEY] ?: "",
+                name = it[NAME_KEY] ?: "",
                 token = it[TOKEN_KEY] ?: "",
                 role = it[ROLE_KEY] ?: ""
             )
@@ -24,6 +27,7 @@ class AccountPreference private constructor(private val dataStore: DataStore<Pre
     suspend fun saveAccount(account: AccountModel) {
         dataStore.edit {
             it[ID_KEY] = account.id
+            it[NAME_KEY] = account.name
             it[TOKEN_KEY] = account.token
             it[ROLE_KEY] = account.role
         }
@@ -37,6 +41,7 @@ class AccountPreference private constructor(private val dataStore: DataStore<Pre
 
     companion object {
         private val ID_KEY = stringPreferencesKey("id")
+        private val NAME_KEY = stringPreferencesKey("name")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val ROLE_KEY = stringPreferencesKey("role")
 

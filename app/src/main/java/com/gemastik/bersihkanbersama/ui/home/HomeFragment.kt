@@ -1,15 +1,13 @@
 package com.gemastik.bersihkanbersama.ui.home
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gemastik.bersihkanbersama.R
 import com.gemastik.bersihkanbersama.databinding.FragmentHomeBinding
 import com.gemastik.bersihkanbersama.ui.adapters.ActivityListAdapter
 import com.gemastik.bersihkanbersama.ui.adapters.ArticleListAdapter
@@ -47,31 +45,38 @@ class HomeFragment : Fragment() {
 
     private fun setupHeader() {
         loadingState(true)
-//        viewModel.getAccount().observe(viewLifecycleOwner) {
-//
-//        }
-        viewModel.getUser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VySWQiOiI2NGE5NTRkZDI0N2EyODMzZDYzMmEwN2YifQ.err1Lvb4RJlX9Vio7M989HC0mlQcxLthgztbz-PSa0w")
-            .observe(viewLifecycleOwner) {
-                when (it) {
-                    is Result.Loading -> {
-                        loadingState(true)
-                    }
+        viewModel.getAccount().observe(viewLifecycleOwner) { account ->
+            if (account.role == "User") {
+                viewModel.getUser(account.token)
+                    .observe(viewLifecycleOwner) {
+                        when (it) {
+                            is Result.Loading -> {
+                                loadingState(true)
+                            }
 
-                    is Result.Success -> {
-                        loadingState(false)
-                        binding?.apply {
-                            tvUsername.text = it.data.name
-                            tvPoint.text = it.data.points.totalPoints.toString()
-                            tvActivity.text = it.data.activities?.size.toString()
+                            is Result.Success -> {
+                                loadingState(false)
+                                binding?.apply {
+                                    tvUsername.text = account.name
+                                    tvPoint.text = it.data.points.totalPoints.toString()
+                                    tvActivity.text = it.data.activities?.size.toString()
+                                }
+                            }
+
+                            is Result.Error -> {
+                                loadingState(false)
+                                Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
-
-                    is Result.Error -> {
-                        loadingState(false)
-                        Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
-                    }
+            } else {
+                binding?.apply {
+                    tvUsername.text = account.name
+                    tvPoint.text = "0"
+                    tvActivity.text = "0"
                 }
             }
+        }
     }
 
     private fun setupOngoingActivity() {
@@ -90,7 +95,7 @@ class HomeFragment : Fragment() {
                 is Result.Success -> {
                     loadingState(false)
                     val data = it.data.activities.filter { activity ->
-                        activity.status != "Finished"
+                        activity.status == "Started"
                     }
                     ongoingActivityAdapter.submitList(data)
                 }

@@ -68,6 +68,35 @@ object Utils {
         return myFile
     }
 
+    fun formatPrice(price: Int): String {
+        val formattedPrice = NumberFormat.getNumberInstance(Locale.getDefault()).format(price)
+        return "Rp $formattedPrice"
+    }
+
+    val daftarKota: List<String> = listOf(
+        "Jakarta",
+        "Bengkulu",
+        "Surabaya",
+        "Medan",
+        "Bandung",
+        "Bekasi",
+        "Semarang",
+        "Tangerang",
+        "Depok",
+        "Palembang",
+        "Makassar",
+        "South Tangerang",
+        "Batam",
+        "Pekanbaru",
+        "Bogor",
+        "Bandar Lampung",
+        "Malang",
+        "Padang",
+        "Denpasar",
+        "Samarinda",
+        "Mataram"
+    )
+
     fun formatDate(currentDateString: String, targetTimeZone: String): String {
         val instant = Instant.parse(currentDateString)
         val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy | HH:mm")
