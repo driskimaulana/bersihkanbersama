@@ -2,7 +2,6 @@ package com.gemastik.bersihkanbersama.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -13,7 +12,6 @@ import com.gemastik.bersihkanbersama.ui.forum.home.ForumHomeFragment
 import com.gemastik.bersihkanbersama.ui.home.HomeFragment
 import com.gemastik.bersihkanbersama.ui.leaderboard.LeaderboardFragment
 import com.gemastik.bersihkanbersama.ui.profile.ProfileFragment
-import com.gemastik.bersihkanbersama.ui.register.RegisterViewModel
 import com.gemastik.bersihkanbersama.ui.shop.home.ShopHomeFragment
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 

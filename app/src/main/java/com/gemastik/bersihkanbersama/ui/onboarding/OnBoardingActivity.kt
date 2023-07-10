@@ -72,6 +72,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
     private fun startChooseRoleActivity(){
         val intent = Intent(this, ChooseRoleActivity::class.java)
+//        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
