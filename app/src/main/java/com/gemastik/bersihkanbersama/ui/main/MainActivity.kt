@@ -2,7 +2,6 @@ package com.gemastik.bersihkanbersama.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -11,8 +10,8 @@ import com.gemastik.bersihkanbersama.databinding.ActivityMainBinding
 import com.gemastik.bersihkanbersama.ui.addAksi.AddAksiFragment
 import com.gemastik.bersihkanbersama.ui.forum.home.ForumHomeFragment
 import com.gemastik.bersihkanbersama.ui.home.HomeFragment
+import com.gemastik.bersihkanbersama.ui.leaderboard.LeaderboardFragment
 import com.gemastik.bersihkanbersama.ui.profile.ProfileFragment
-import com.gemastik.bersihkanbersama.ui.register.RegisterViewModel
 import com.gemastik.bersihkanbersama.ui.shop.home.ShopHomeFragment
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.chat -> replaceFragment(ForumHomeFragment())
                 R.id.shop -> replaceFragment(ShopHomeFragment())
-//                R.id.shop -> replaceFragment(AddAksiFragment())
+                R.id.medal -> replaceFragment(LeaderboardFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 else -> {}
             }
@@ -51,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.chat -> replaceFragment(ForumHomeFragment())
                 R.id.action -> replaceFragment(AddAksiFragment())
+                R.id.medal -> replaceFragment(LeaderboardFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 else -> {}
             }
