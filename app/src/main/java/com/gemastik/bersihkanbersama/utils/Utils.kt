@@ -103,4 +103,10 @@ object Utils {
             .withZone(ZoneId.of(targetTimeZone))
         return formatter.format(instant)
     }
+    val daftarTim: List<String> = listOf(
+        "Tim 1",
+        "Tim 2",
+        "Tim 3"
+    )
+
 }

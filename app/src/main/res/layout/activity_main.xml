@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <FrameLayout
         android:id="@+id/mainScreenFragment"
@@ -23,6 +23,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav"
+        android:background="@color/bg_card_mapala"
+        app:labelVisibilityMode="unlabeled"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/realBottomNavbarOrg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/botton_nav_org"
         android:background="@color/bg_card_mapala"
         app:labelVisibilityMode="unlabeled"/>
 

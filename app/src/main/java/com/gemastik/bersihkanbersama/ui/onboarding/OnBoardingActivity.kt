@@ -1,6 +1,5 @@
 package com.gemastik.bersihkanbersama.ui.onboarding
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,8 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.gemastik.bersihkanbersama.R
 import com.gemastik.bersihkanbersama.databinding.ActivityOnboardingBinding
-import com.gemastik.bersihkanbersama.ui.MainActivity
 import com.gemastik.bersihkanbersama.ui.chooserole.ChooseRoleActivity
+import com.gemastik.bersihkanbersama.ui.main.MainActivity
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
 
 class OnBoardingActivity : AppCompatActivity() {

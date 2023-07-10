@@ -1,5 +1,6 @@
 package com.gemastik.bersihkanbersama.ui.aksiberlangsung
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.activity.result.contract.ActivityResultContracts
+import com.gemastik.bersihkanbersama.R
 import com.gemastik.bersihkanbersama.databinding.ActivityAksiBerlangsungBinding
 import com.gemastik.bersihkanbersama.ui.adapters.LeaderboardListAdapter
 import com.gemastik.bersihkanbersama.ui.addhasilkilo.AddHasilKiloActivity
@@ -22,6 +25,14 @@ class AksiBerlangsungActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
     private val adapter = LeaderboardListAdapter()
+
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // RENDER ULANG
+                Toast.makeText(this, "Sukses menambahkan", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -117,7 +128,8 @@ class AksiBerlangsungActivity : AppCompatActivity() {
     private fun tambahHasilButtonAction() {
         binding.tambahHasil.setOnClickListener {
             val intent = Intent(this, AddHasilKiloActivity::class.java)
-            startActivity(intent)
+            intent.putExtra("id", "64a911e58c3a2a2d718716f1")
+            resultLauncher.launch(intent)
         }
     }
 

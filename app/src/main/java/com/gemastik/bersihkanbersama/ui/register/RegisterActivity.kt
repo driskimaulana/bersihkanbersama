@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.gemastik.bersihkanbersama.data.models.AccountModel
 import com.gemastik.bersihkanbersama.databinding.ActivityRegisterBinding
-import com.gemastik.bersihkanbersama.ui.MainActivity
+import com.gemastik.bersihkanbersama.ui.main.MainActivity
 import com.gemastik.bersihkanbersama.ui.login.LoginActivity
 import com.gemastik.bersihkanbersama.utils.Result
 import com.gemastik.bersihkanbersama.utils.ViewModelFactory
@@ -53,9 +53,8 @@ class RegisterActivity : AppCompatActivity() {
                 is Result.Success -> {
                     loadingState(false)
 
-                    Log.d("DEBUGNOVAL", result.data.toString())
-
                     val account = AccountModel(result.data.userId, "", result.data.token, "User")
+
                     viewModel.saveAccount(account)
 
                     startMainActivity()

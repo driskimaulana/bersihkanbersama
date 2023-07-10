@@ -9,9 +9,9 @@
         android:icon="@drawable/ic_chat"
         android:title="Forum"/>
     <item
-        android:id="@+id/shop"
-        android:icon="@drawable/ic_shop"
-        android:title="Belanja" />
+        android:id="@+id/action"
+        android:icon="@drawable/ic_task_actions_7274208"
+        android:title="Buat Aksi" />
     <item
         android:id="@+id/medal"
         android:icon="@drawable/ic_medal"
