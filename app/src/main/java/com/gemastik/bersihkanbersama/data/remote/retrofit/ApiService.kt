@@ -76,7 +76,7 @@ interface ApiService {
         @Part("firstRewards") firstRewards: RequestBody,
         @Part("secondRewards") secondRewards: RequestBody,
         @Part("thirdRewards") thirdRewards: RequestBody,
-        @Part("coverImage") coverImage: MultipartBody.Part,
+        @Part coverImage: MultipartBody.Part,
         @Part("city") city: RequestBody,
         @Part("fullAddress") fullAddress: RequestBody
     ): Call<CommonResponse<CreateNewActivityResponse>>

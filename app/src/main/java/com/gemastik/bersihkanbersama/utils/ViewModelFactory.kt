@@ -19,6 +19,8 @@ import com.gemastik.bersihkanbersama.ui.viewmodels.DonationViewModel
 import com.gemastik.bersihkanbersama.ui.login.LoginViewModel
 import com.gemastik.bersihkanbersama.ui.onboarding.OnboardingViewModel
 import com.gemastik.bersihkanbersama.ui.register.RegisterViewModel
+import com.gemastik.bersihkanbersama.ui.viewmodels.AksiViewModel
+import com.gemastik.bersihkanbersama.ui.viewmodels.ProfileViewModel
 
 class ViewModelFactory private constructor(
     private val authRepository: AuthRepository,
@@ -36,6 +38,8 @@ class ViewModelFactory private constructor(
             modelClass.isAssignableFrom(DetailAksiViewModel::class.java) -> DetailAksiViewModel(authRepository, activityRepository) as T
             modelClass.isAssignableFrom(AksiBerlangsungViewModel::class.java) -> AksiBerlangsungViewModel(authRepository, activityRepository) as T
             modelClass.isAssignableFrom(OnboardingViewModel::class.java) -> OnboardingViewModel(authRepository) as T
+            modelClass.isAssignableFrom(AksiViewModel::class.java) -> AksiViewModel(activityRepository, authRepository) as T
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> ProfileViewModel(authRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

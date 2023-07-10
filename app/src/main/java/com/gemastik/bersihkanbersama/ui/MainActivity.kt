@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.gemastik.bersihkanbersama.R
 import com.gemastik.bersihkanbersama.databinding.ActivityDonateBinding
 import com.gemastik.bersihkanbersama.databinding.ActivityMainBinding
+import com.gemastik.bersihkanbersama.ui.addAksi.AddAksiFragment
 import com.gemastik.bersihkanbersama.ui.forum.home.ForumHomeFragment
 import com.gemastik.bersihkanbersama.ui.home.HomeFragment
 import com.gemastik.bersihkanbersama.ui.profile.ProfileFragment
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.chat -> replaceFragment(ForumHomeFragment())
                 R.id.shop -> replaceFragment(ShopHomeFragment())
+//                R.id.shop -> replaceFragment(AddAksiFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 else -> {}
             }
