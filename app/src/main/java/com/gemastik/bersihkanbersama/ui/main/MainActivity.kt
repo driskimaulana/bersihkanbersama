@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.chat -> replaceFragment(ForumHomeFragment())
                 R.id.shop -> replaceFragment(ShopHomeFragment())
+//                R.id.shop -> replaceFragment(AddAksiFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 else -> {}
             }

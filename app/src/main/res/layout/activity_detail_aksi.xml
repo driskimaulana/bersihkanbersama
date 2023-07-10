@@ -9,6 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:paddingBottom="20dp"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -121,7 +122,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/luffy_profile" />
+                    android:src="@drawable/mahacitalogo" />
 
                 <TextView
                     android:id="@+id/textView5"

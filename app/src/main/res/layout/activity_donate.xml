@@ -52,7 +52,7 @@
         android:layout_marginTop="16dp"
         app:imageCardDonasi="@drawable/ic_water_824239"
         app:donateName="Air Mineral"
-        app:donatePrice="20000"
+        app:donatePrice="10000"
         app:layout_constraintEnd_toStartOf="@+id/donasiCardView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -64,7 +64,7 @@
         android:layout_marginStart="8dp"
         app:imageCardDonasi="@drawable/ic_gloves_2679094"
         app:donateName="Sarung Tangan"
-        app:donatePrice="30000"
+        app:donatePrice="10000"
         app:layout_constraintBottom_toBottomOf="@+id/donasiCardView1"
         app:layout_constraintEnd_toStartOf="@+id/donasiCardView3"
         app:layout_constraintStart_toEndOf="@+id/donasiCardView1"
@@ -90,9 +90,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:imageCardDonasi="@drawable/ic_water_824239"
-        app:donateName="Air Mineral"
-        app:donatePrice="40000"
+        app:imageCardDonasi="@mipmap/ic_launch_box_foreground"
+        app:donateName="Nasi Kotak"
+        app:donatePrice="10000"
         app:layout_constraintEnd_toStartOf="@+id/donasiCardView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/donasiCardView1" />
@@ -102,9 +102,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:imageCardDonasi="@drawable/ic_gloves_2679094"
-        app:donateName="Air Mineral"
-        app:donatePrice="50000"
+        app:imageCardDonasi="@mipmap/ic_mask_foreground"
+        app:donateName="Masker"
+        app:donatePrice="20000"
         app:layout_constraintBottom_toBottomOf="@+id/donasiCardView4"
         app:layout_constraintEnd_toStartOf="@+id/donasiCardView6"
         app:layout_constraintStart_toEndOf="@+id/donasiCardView4"
@@ -116,20 +116,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        app:imageCardDonasi="@drawable/ic_garbage_bag_5495948"
-        app:donateName="Air Mineral"
-        app:donatePrice="60000"
+        app:imageCardDonasi="@mipmap/ic_garbage_truck_foreground"
+        app:donateName="Truk Sampah"
+        app:donatePrice="300000"
         app:layout_constraintBottom_toBottomOf="@+id/donasiCardView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/donasiCardView5"
         app:layout_constraintTop_toTopOf="@+id/donasiCardView4" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donasi Lain"
+        android:id="@+id/tv_biayalain"
+        app:layout_constraintTop_toBottomOf="@+id/donasiCardView6"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        android:textSize="7pt"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"/>
+
     <EditText
-        android:id="@+id/searchInput"
+        android:id="@+id/edt_biayalain"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:inputType="number"
         android:layout_marginEnd="16dp"
         android:background="@drawable/primary_button"
         android:drawableStart="@drawable/ic_rupiah_9382297"
@@ -138,7 +152,7 @@
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donasiCardView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_biayalain" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -200,11 +214,11 @@
         android:text="Samarkan Nama"
         android:textColor="@color/white"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/daftar_button"
+        app:layout_constraintBottom_toTopOf="@+id/bayar_button"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/daftar_button"
+        android:id="@+id/bayar_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -213,7 +227,22 @@
         android:background="@drawable/primary_button"
         android:text="Bayar"
         android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/submit_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

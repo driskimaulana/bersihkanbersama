@@ -23,7 +23,8 @@ class SplashActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             delay(3000)
-            startActivity(Intent(this@SplashActivity, AksiBerlangsungActivity::class.java))
+//            startActivity(Intent(this@SplashActivity, AksiBerlangsungActivity::class.java))
+            startActivity(Intent(this@SplashActivity, OnBoardingActivity::class.java))
             finish()
         }
     }

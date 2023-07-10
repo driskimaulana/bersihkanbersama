@@ -33,7 +33,8 @@ class DonationRepository private constructor(
     ): LiveData<Result<String>> {
         createNewDonationResult.value = Result.Loading
 
-        val client = apiService.createNewDonation(token, id, requestBody)
+        val client = apiService.createNewDonation("Bearer $token", id, requestBody)
+
         client.enqueue(object : Callback<CommonResponse<CreateNewDonationResponse>> {
             override fun onResponse(
                 call: Call<CommonResponse<CreateNewDonationResponse>>,

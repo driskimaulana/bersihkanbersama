@@ -29,12 +29,12 @@
 
     <TextView
         android:id="@+id/textView31"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Felis bibendum ut tristique et ut tristique"
+        android:text="Indonesia merupakan penghasil sampah plastik terbanyak kedua di dunia."
         android:textColor="@color/white"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
