@@ -41,8 +41,6 @@ class DonationPaymentActivity : AppCompatActivity() {
 
         val id = intent.getStringExtra("id")
 
-        Log.d("driskidebug", "onCreate: ${id}")
-
         getData(id.toString())
 
         val pullToRefresh = binding.swiperefresh

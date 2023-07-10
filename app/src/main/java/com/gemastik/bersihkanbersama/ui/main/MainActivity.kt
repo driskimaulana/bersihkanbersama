@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.account.observe(this) {
             binding.realBottomNavbarOrg.visibility = if (it.role == "User") View.INVISIBLE else View.VISIBLE
-            binding.realBottomNavbar.visibility = if (it.role == "User") View.VISIBLE else View.GONE
+            binding.realBottomNavbar.visibility = if (it.role == "User") View.VISIBLE else View.INVISIBLE
         }
 
         binding.realBottomNavbar.setOnItemSelectedListener {
