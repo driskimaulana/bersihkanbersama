@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/refresh"
+    android:paddingBottom="20dp"
     android:background="@color/dark_green"
     tools:context=".ui.shop.home.ShopHomeFragment">
 

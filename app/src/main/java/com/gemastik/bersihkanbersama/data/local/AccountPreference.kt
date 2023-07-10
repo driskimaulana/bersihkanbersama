@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.map
 class AccountPreference private constructor(private val dataStore: DataStore<Preferences>) {
     fun getAccount(): Flow<AccountModel> =
         dataStore.data.map {
-            Log.d("driskidebug", it.toString())
             AccountModel(
                 id = it[ID_KEY] ?: "",
                 token = it[TOKEN_KEY] ?: "",
