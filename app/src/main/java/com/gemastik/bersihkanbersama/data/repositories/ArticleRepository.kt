@@ -9,6 +9,7 @@ import com.gemastik.bersihkanbersama.data.remote.response.ArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CommonResponse
 import com.gemastik.bersihkanbersama.data.remote.response.CreateNewArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetAllArticleResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetArticleResponse
 import com.gemastik.bersihkanbersama.data.remote.retrofit.ApiService
 import com.gemastik.bersihkanbersama.utils.DataMapper
 import com.gemastik.bersihkanbersama.utils.Result
@@ -107,15 +108,15 @@ class ArticleRepository private constructor(
         getArticleByIdResult.value = Result.Loading
 
         val client = apiService.getArticleById(id)
-        client.enqueue(object : Callback<CommonResponse<ArticleResponse>> {
+        client.enqueue(object : Callback<CommonResponse<GetArticleResponse>> {
             override fun onResponse(
-                call: Call<CommonResponse<ArticleResponse>>,
-                response: Response<CommonResponse<ArticleResponse>>
+                call: Call<CommonResponse<GetArticleResponse>>,
+                response: Response<CommonResponse<GetArticleResponse>>
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
                     if (responseBody.status == 200) {
-                        val data = DataMapper.mapArticleResponseToArticleModel(responseBody.data)
+                        val data = DataMapper.mapArticleResponseToArticleModel(responseBody.data.article)
                         getArticleByIdResult.value = Result.Success(data)
                     } else {
                         Log.e("ERROR", "onResponse: ${responseBody.message}")
@@ -127,7 +128,7 @@ class ArticleRepository private constructor(
                 }
             }
 
-            override fun onFailure(call: Call<CommonResponse<ArticleResponse>>, t: Throwable) {
+            override fun onFailure(call: Call<CommonResponse<GetArticleResponse>>, t: Throwable) {
                 Log.e("ERROR", "onFailure: ${t.message.toString()}")
                 getArticleByIdResult.value = Result.Error(t.message.toString())
             }

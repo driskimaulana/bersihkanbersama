@@ -53,7 +53,8 @@ class RegisterActivity : AppCompatActivity() {
                 is Result.Success -> {
                     loadingState(false)
 
-                    val account = AccountModel(result.data.userId, result.data.token, "User")
+                    val account = AccountModel(result.data.userId, "", result.data.token, "User")
+
                     viewModel.saveAccount(account)
 
                     startMainActivity()

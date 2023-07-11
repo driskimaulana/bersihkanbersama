@@ -14,6 +14,8 @@ import com.gemastik.bersihkanbersama.data.remote.response.CreateNewDonationRespo
 import com.gemastik.bersihkanbersama.data.remote.response.GetActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetAllActivityResponse
 import com.gemastik.bersihkanbersama.data.remote.response.GetAllArticleResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetArticleResponse
+import com.gemastik.bersihkanbersama.data.remote.response.GetUserResponse
 import com.gemastik.bersihkanbersama.data.remote.response.LeaderboardResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignInResponse
 import com.gemastik.bersihkanbersama.data.remote.response.OrganizationSignUpResponse
@@ -36,6 +38,11 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
+    @GET("users")
+    fun getUser(
+        @Header("Authorization") token: String
+    ): Call<CommonResponse<GetUserResponse>>
+
     @POST("user/signin")
     fun userSignIn(
         @Body signInRequest: SignInRequest
@@ -145,5 +152,5 @@ interface ApiService {
     @GET("article/{id}")
     fun getArticleById(
         @Path("id") id: String
-    ): Call<CommonResponse<ArticleResponse>>
+    ): Call<CommonResponse<GetArticleResponse>>
 }

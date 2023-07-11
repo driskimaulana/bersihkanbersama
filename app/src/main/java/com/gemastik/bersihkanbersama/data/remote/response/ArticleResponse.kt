@@ -9,7 +9,7 @@ data class ArticleResponse(
     @field:SerializedName("Title")
     val title: String,
 
-    @field:SerializedName("Write")
+    @field:SerializedName("Writer")
     val write: String,
 
     @field:SerializedName("Summary")

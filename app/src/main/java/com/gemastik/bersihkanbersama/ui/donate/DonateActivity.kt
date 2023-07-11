@@ -45,17 +45,20 @@ class DonateActivity : AppCompatActivity() {
 
     private lateinit var user: AccountModel
 
+    private lateinit var activityId: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDonateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-                Log.d("driskidebug", "testt")
         lifecycleScope.launch {
             viewModel.getAccount().collect{
                 user = it
             }
         }
+
+        activityId = intent.getStringExtra("id") ?: ""
 
         donasiCardViews = listOf(
             binding.donasiCardView1,
@@ -110,7 +113,7 @@ class DonateActivity : AppCompatActivity() {
 
         viewModel.createNewDonation(
             user.token,
-                    "64a90e8218492cef048bd8d7",
+                    activityId,
                     donationBody
             ).observe(this) {
             if (it != null) {
